@@ -1,0 +1,391 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Creating Blog Site using Hugo - Kusnadi</title>
+<meta name=description content="Step by step process to create a fast static blog site using Hugo">
+<meta name=author content="Kusnadi"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Kusnadi","url":"https:\/\/kusnaditjung.github.io"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/kusnaditjung.github.io"}</script>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/kusnaditjung.github.io","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/kusnaditjung.github.io\/post\/2021-10-17-first-blog-hugo\/","name":"Creating blog site using hugo"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Kusnadi"},"headline":"Creating Blog Site using Hugo","description":"Hi, this is my first post for my GitHub blog. I created this post using Hugo. I have used Blogspot for blogging for a while, and I found the blogging experience is less desirable, unresponsive, and slow. I was looking for a static website generator for my github.io pages. In this post, however, I focus only the Hugo first. The hosting on Github.io comes in the next post.\nYou can create a Hugo website, run it locally in a console, and view it in a browser while in development or writing mode.","inLanguage":"en","wordCount":1309,"datePublished":"2021-10-17T00:00:00","dateModified":"2021-10-17T00:00:00","image":"https:\/\/kusnaditjung.github.io\/img\/logo.png","keywords":["Programming"],"mainEntityOfPage":"https:\/\/kusnaditjung.github.io\/post\/2021-10-17-first-blog-hugo\/","publisher":{"@type":"Organization","name":"https:\/\/kusnaditjung.github.io","logo":{"@type":"ImageObject","url":"https:\/\/kusnaditjung.github.io\/img\/logo.png","height":60,"width":60}}}</script>
+<meta property="og:title" content="Creating Blog Site using Hugo">
+<meta property="og:description" content="Step by step process to create a fast static blog site using Hugo">
+<meta property="og:image" content="https://kusnaditjung.github.io/img/logo.png">
+<meta property="og:url" content="https://kusnaditjung.github.io/post/2021-10-17-first-blog-hugo/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kusnadi">
+<meta name=twitter:title content="Creating Blog Site using Hugo">
+<meta name=twitter:description content="Step by step process to create a fast static blog site using Hugo">
+<meta name=twitter:image content="https://kusnaditjung.github.io/img/logo.png">
+<meta name=twitter:card content="summary">
+<link href=https://kusnaditjung.github.io/img/favicon.ico rel=icon type=image/x-icon>
+<meta name=generator content="Hugo 0.88.1">
+<link rel=alternate href=https://kusnaditjung.github.io/index.xml type=application/rss+xml title=Kusnadi><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css integrity=sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y crossorigin=anonymous>
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous>
+<link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://kusnaditjung.github.io/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+<link rel=stylesheet href=https://kusnaditjung.github.io/css/highlight.min.css><link rel=stylesheet href=https://kusnaditjung.github.io/css/codeblock.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css integrity=sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css integrity=sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R crossorigin=anonymous>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+<div class=container-fluid>
+<div class=navbar-header>
+<button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://kusnaditjung.github.io>Kusnadi</a>
+</div>
+<div class="collapse navbar-collapse" id=main-navbar>
+<ul class="nav navbar-nav navbar-right">
+<li>
+<a title=Blog href=/>Blog</a>
+</li>
+<li>
+<a title=Bio href=/page/about/>Bio</a>
+</li>
+<li>
+<a title=Tags href=/tags>Tags</a>
+</li>
+</ul>
+</div>
+<div class=avatar-container>
+<div class=avatar-img-border>
+<a title=Kusnadi href=https://kusnaditjung.github.io>
+<img class=avatar-img src=https://kusnaditjung.github.io/img/logo.png alt=Kusnadi>
+</a>
+</div>
+</div>
+</div>
+</nav>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div>
+<div id=header-big-imgs data-num-img=3 data-img-src-1=/img/triangle.jpg data-img-desc-1=Triangle data-img-src-2=/img/sphere.jpg data-img-desc-2=Sphere data-img-src-3=/img/hexagon.jpg data-img-desc-3=Hexagon></div>
+<header class="header-section has-img">
+<div class="intro-header big-img">
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class=post-heading>
+<h1>Creating Blog Site using Hugo</h1>
+<h2 class=post-subheading>Step by step process to create a fast static blog site using Hugo</h2>
+<span class=post-meta>
+<i class="fas fa-calendar"></i>&nbsp;Posted on October 17, 2021
+&nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;7&nbsp;minutes
+&nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1309&nbsp;words
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kusnadi
+</span>
+</div>
+</div>
+</div>
+</div>
+<span class=img-desc style=display:inline></span>
+</div>
+<div class="intro-header no-img">
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class=post-heading>
+<h1>Creating Blog Site using Hugo</h1>
+<h2 class=post-subheading>Step by step process to create a fast static blog site using Hugo</h2>
+<span class=post-meta>
+<i class="fas fa-calendar"></i>&nbsp;Posted on October 17, 2021
+&nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;7&nbsp;minutes
+&nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1309&nbsp;words
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kusnadi
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class=container role=main>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role=main class=blog-post>
+<p>Hi, this is my first post for my GitHub blog. I created this post using Hugo. I have used Blogspot for blogging for a while, and I found the blogging experience is less desirable, unresponsive, and slow. I was looking for a static website generator for my github.io pages. In this post, however, I focus only the Hugo first. The hosting on Github.io comes in the next post.</p>
+<p>You can create a Hugo website, run it locally in a console, and view it in a browser while in development or writing mode. Hugo is a static website generator, meaning that the Hugo website is just a template, which needs to be built to generate the static files. You then host the generated files. Hugo build is fast, and when a website is run locally using the Hugo server in development mode, you can edit your blog post and view the change directly in your browser. Hugo server generates the static files in memory so there is no actual output.</p>
+<p>Once your blog post is ready, you need to regenerate your whole website static files, not just your blog post, and publish them. All of this can be done using Hugo CLI or Command Line Interface. This is a non-traditional way to writing a blog post like using WordPress, or Blogger platforms.</p>
+<p>Here are the steps to use Hugo to create a website:</p>
+<ol>
+<li>
+<p><strong>Install Hugo on your local machine</strong>. <br>
+Hugo is just a standalone file, you can just download, extract it, and point your environment path to the location of the file.
+Alternatively, if you have package management software on your local machine such as chocolatey or scoop you just open bash or cmd console and type</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>choco install hugo
+</code></pre></div><p>or,</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>scoop install hugo
+</code></pre></div></li>
+<li>
+<p><em><strong>Create a website using Hugo</strong></em>. <br>
+To create a Hugo website, just type:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>hugo new site [newsite] 
+</code></pre></div><p>This will create a new folder with the name you have specified. All website assets are inside the folder.
+In this post, we will create a website called myblog</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>hugo new site myblog 
+</code></pre></div><p>The images below show the structure of the new directory.
+<img src=/img/hugo-directory.png alt="hugo website directory structure"></p>
+</li>
+<li>
+<p><em><strong>Download a theme</strong></em>.<br>
+The previous step has created a Hugo website, but it is still empty. If you run the website locally and browse it, it shows nothing.
+The next step is to download a theme into the website themes subdirectory. You can download free themes from <a href=https://themes.gohugo.io>https://themes.gohugo.io</a>
+The download button in each theme directs you to the theme repository.
+If you already have git installed on your machine, clone your choice of theme in the themes subdirectory</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>git clone [git url] themes/[theme name]
+</code></pre></div><p>Note, you don&rsquo;t need to follow the default name from the git for the theme name. However, if you want a default name, you can do</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>cd themes
+git clone [git url]
+</code></pre></div><p>In this post, we use a beautiful Hugo theme, so the command is</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>git clone https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
+</code></pre></div><p>After you have cloned the theme, don&rsquo;t forget to delete .git and .github directory inside the <em><strong>beatifulhugo</strong></em> directory.
+This is important to avoid conflict if the Hugo website is also a git repo.</p>
+</li>
+<li>
+<p><em><strong>Configure the website</strong></em>. <br>
+The next thing is to configure the website to use the theme. In the root website, open the empty <em><strong>config.toml</strong></em>, and add these lines below</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>title = &#34;Kusnadi&#34;
+theme = &#34;beautifulhugo&#34;
+
+[Params]
+subtitle = &#34;On coding and learning&#34;
+mainSections = [&#34;post&#34;]
+logo = &#34;/img/logo.png&#34;  
+
+[Author]
+name = &#34;Kusnadi&#34;  
+email = &#34;&lt;your email address&gt;&#34;  
+github = &#34;kusnaditjung&#34;   
+
+[[menu.main]]
+name = &#34;Blogs&#34;
+url = &#34;&#34;
+weight = 1
+
+[[menu.main]]
+name = &#34;Bio&#34;
+url = &#34;pages/about&#34;
+weight = 2
+
+[[menu.main]]
+name = &#34;Tags&#34;
+url = &#34;tags&#34;
+weight = 3	
+</code></pre></div><p>The top lines are the <em><strong>title</strong></em> for your blog, and the <em><strong>theme</strong></em> used.</p>
+<p>The <em><strong>Params</strong></em> section, the first line is <em><strong>subtitle</strong></em> for the blog. The <em><strong>mainSections</strong></em>, is the location inside the <em><strong>content</strong></em> directory to populate blog posts for the home page.<br>
+It is arbitrary and can have multiple locations. For this blog, we populate all posts inside <em><strong>post</strong></em> directory. Next is the logo picture, the location is relative to <em><strong>static</strong></em> subdirectory.</p>
+<p><em><strong>Author</strong></em> section is information about the author and their social links. There are many other social links supported, you can see <em><strong>config.toml</strong></em> inside the <em><strong>exampleSite</strong></em> subdirectory in the <em><strong>beatifulhugo</strong></em> theme directory.</p>
+<p>The remaining entries are for the blog menu. We only create a simple menu containing homepage called <em><strong>Blogs</strong></em>, <em><strong>Bio</strong></em> page, and compilation of <em><strong>Tags</strong></em> page.
+The home page url is <em><strong>""</strong></em>, the tags url is predefined <em><strong>tags</strong></em>, and the <em><strong>Bio</strong></em> url depend on the location in the <em><strong>content</strong></em> directory.</p>
+</li>
+<li>
+<p><em><strong>Populate the content and static assets</strong></em>* <br>
+The next thing is to populate the content and static assets.
+From the configuration in step 3, there are two new files needed inside the blog directory.</p>
+<ul>
+<li>The logo picture goes to <em><strong>/static/img/logo.png</strong></em></li>
+<li>The bio page goes to <em><strong>/content/pages/about.md</strong></em></li>
+<li>In addition, we create our first blog post and this goes to <em><strong>/content/post/first-post.md</strong></em></li>
+</ul>
+<p>Hugo supports a few file formats for blogging. Go to <a href=https://gohugo.io/content-management/formats/>https://gohugo.io/content-management/formats/</a> to see other supported formats.
+On the blog post, we add meta-data on the top of the file like below:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>---
+title: Creating blog site using Hugo
+subtitle: Step by step process to create blog site using Hugo
+date: 2021-10-17
+tags: [&#34;Programming&#34;, &#34;Admin&#34;, &#34;Hugo&#34;]
+bigimg: [{src: &#34;/img/triangle.jpg&#34;, desc: &#34;Triangle&#34;}]
+---
+</code></pre></div><p>You can put multiple entries in the <em><strong>tags</strong></em> and <em><strong>bigimg</strong></em>. The blog website generated by Hugo shows the carousel images at the top of the blog post if multiple entries are in the <em><strong>bigimg</strong></em>.</p>
+<p>In addition to that, the blog shows the blog posts on the homepage in the order of the <em><strong>date</strong></em> entry, from latest to oldest.
+You can organise your blog posts inside <em><strong>mainSections</strong></em> paths into a subdirectory of topics and categories, and control the order of display by using <em><strong>date</strong></em> metadata.</p>
+</li>
+<li>
+<p><em><strong>View blog site in a development mode</strong></em>.<br>
+We have completed the website now. You can view it on your local machine in development mode.
+When running in a development mode, the generated static files for the website are in memory, and you can add a post and edit them. The same applies to the configuration files.
+Hugo will be regenerated static files if there are changes to the Hugo website. And if you open the blogs in a browser, for any changes to the website (don&rsquo;t forget to save the changes), the browser will detect the changes and rerender straightaway.
+To view in a development mode, from the root Hugo website, run:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>hugo server
+</code></pre></div><p>The console display the following:</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>Start building sites …
+hugo v0.88.1-5BC54738 windows/amd64 BuildDate=2021-09-04T09:39:19Z VendorInfo=gohugoio
+
+                   | EN
+-------------------+------
+  Pages            |  15
+  Paginator pages  |   0
+  Non-page files   |   0
+  Static files     | 187
+  Processed images |   0
+  Aliases          |   4
+  Sitemaps         |   1
+  Cleaned          |   0
+
+Built in 463 ms
+Watching for changes in D:\Psn\myblog\{archetypes,content,data,layouts,static,themes}
+Watching for config changes in D:\Psn\myblog\config.toml
+Environment: &#34;development&#34;
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at //localhost:1313/ (bind address 127.0.0.1)
+Press Ctrl+C to stop
+</code></pre></div><p>and browse to the website URL http://localhost:1313.
+You get something like below on the home page.</p>
+<p><img src=/img/blog-sample.png alt="blog home page"></p>
+<p>Note, the website URL can be different each time.</p>
+</li>
+<li>
+<p><em><strong>Publish web site</strong></em>
+Hugo&rsquo;s website is for development.
+For production, you need to use Hugo to generate static files and host them somewhere else.
+Kill the daemon by pressing CTRL+C, if the development server is still active.
+To generate static files, run</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>hugo
+</code></pre></div><p>or,</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>hugo --minify
+</code></pre></div><p>This step creates a <em><strong>public</strong></em> directory in the root. The minification option minifies the size of generated files. The below picture shows the directory structure.
+<img src=/img/public-folder.png alt="public directory">.</p>
+<p>You can then host the static files in any web hosting provider.</p>
+</li>
+</ol>
+<p>To summarise, this post shows how to create a static website using Hugo in your local machine. In the next post, we touch on the topic of hosting Hugo website on the internet.</p>
+<div class=blog-tags>
+<a href=https://kusnaditjung.github.io/tags/programming/>Programming</a>&nbsp;
+</div>
+<hr>
+<section id=social-share>
+<div class="list-inline footer-links">
+<div class=share-box aria-hidden=true>
+<ul class=share>
+<li>
+<a href="//twitter.com/share?url=https%3a%2f%2fkusnaditjung.github.io%2fpost%2f2021-10-17-first-blog-hugo%2f&text=Creating%20Blog%20Site%20using%20Hugo&via=" target=_blank title="Share on Twitter">
+<i class="fab fa-twitter"></i>
+</a>
+</li>
+<li>
+<a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fkusnaditjung.github.io%2fpost%2f2021-10-17-first-blog-hugo%2f" target=_blank title="Share on Facebook">
+<i class="fab fa-facebook"></i>
+</a>
+</li>
+<li>
+<a href="//reddit.com/submit?url=https%3a%2f%2fkusnaditjung.github.io%2fpost%2f2021-10-17-first-blog-hugo%2f&title=Creating%20Blog%20Site%20using%20Hugo" target=_blank title="Share on Reddit">
+<i class="fab fa-reddit"></i>
+</a>
+</li>
+<li>
+<a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fkusnaditjung.github.io%2fpost%2f2021-10-17-first-blog-hugo%2f&title=Creating%20Blog%20Site%20using%20Hugo" target=_blank title="Share on LinkedIn">
+<i class="fab fa-linkedin"></i>
+</a>
+</li>
+<li>
+<a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fkusnaditjung.github.io%2fpost%2f2021-10-17-first-blog-hugo%2f&title=Creating%20Blog%20Site%20using%20Hugo" target=_blank title="Share on StumbleUpon">
+<i class="fab fa-stumbleupon"></i>
+</a>
+</li>
+<li>
+<a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fkusnaditjung.github.io%2fpost%2f2021-10-17-first-blog-hugo%2f&description=Creating%20Blog%20Site%20using%20Hugo" target=_blank title="Share on Pinterest">
+<i class="fab fa-pinterest"></i>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</article>
+<ul class="pager blog-pager">
+</ul>
+</div>
+</div>
+</div>
+<footer>
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+<li>
+<a href=mailto:kusnaditjung@yahoo.com title="Email me">
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href=https://github.com/KusnadiTjung title=GitHub>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href title=RSS>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+</ul>
+<p class="credits copyright text-muted">
+Kusnadi
+&nbsp;&bull;&nbsp;&copy;
+2021
+&nbsp;&bull;&nbsp;
+<a href=https://kusnaditjung.github.io>Kusnadi</a>
+</p>
+<p class="credits theme-by text-muted">
+<a href=https://gohugo.io>Hugo v0.88.1</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer><script src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js integrity=sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js integrity=sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe crossorigin=anonymous></script>
+<script src=https://code.jquery.com/jquery-1.12.4.min.js integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin=anonymous></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script>
+<script src=https://kusnaditjung.github.io/js/main.js></script>
+<script src=https://kusnaditjung.github.io/js/highlight.min.js></script>
+<script>hljs.initHighlightingOnLoad()</script>
+<script>$(document).ready(function(){$("pre.chroma").css("padding","0")})</script><script>renderMathInElement(document.body)</script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js integrity=sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js integrity=sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q crossorigin=anonymous></script><script src=https://kusnaditjung.github.io/js/load-photoswipe.js></script>
+</body>
+</html>
