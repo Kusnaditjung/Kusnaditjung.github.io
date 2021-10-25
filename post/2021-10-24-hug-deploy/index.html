@@ -1,0 +1,367 @@
+<!doctype html><html lang=en itemscope itemtype=http://schema.org/WebPage>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge">
+<meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Deploy Hugo website on Github pages - Kusnadi</title>
+<meta name=description content="Step by step process to deploy Hugo website on Github pages">
+<meta name=author content="Kusnadi"><script type=application/ld+json>{"@context":"http://schema.org","@type":"WebSite","name":"Kusnadi","url":"https:\/\/kusnaditjung.github.io"}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Organization","name":"","url":"https:\/\/kusnaditjung.github.io"}</script>
+<script type=application/ld+json>{"@context":"http://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"https:\/\/kusnaditjung.github.io","name":"home"}},{"@type":"ListItem","position":3,"item":{"@id":"https:\/\/kusnaditjung.github.io\/post\/2021-10-24-hug-deploy\/","name":"Deploy hugo website on github pages"}}]}</script><script type=application/ld+json>{"@context":"http://schema.org","@type":"Article","author":{"name":"Kusnadi"},"headline":"Deploy Hugo website on Github pages","description":"In the previous post, we walk through the process to create a Hugo website and generating static files. The next process is to host the static files on the internet. Hugo documentation, which can be accessed at https:\/\/gohugo.io\/hosting-and-deployment\/, describes different ways to host and deploy the Hugo website.\nThe conventional approach is to generate the static files from a Hugo website and host these files with your choice of hosting providers.","inLanguage":"en","wordCount":1327,"datePublished":"2021-10-24T00:00:00","dateModified":"2021-10-24T00:00:00","image":"https:\/\/kusnaditjung.github.io\/img\/logo.png","keywords":["Hugo, Github"],"mainEntityOfPage":"https:\/\/kusnaditjung.github.io\/post\/2021-10-24-hug-deploy\/","publisher":{"@type":"Organization","name":"https:\/\/kusnaditjung.github.io","logo":{"@type":"ImageObject","url":"https:\/\/kusnaditjung.github.io\/img\/logo.png","height":60,"width":60}}}</script>
+<meta property="og:title" content="Deploy Hugo website on Github pages">
+<meta property="og:description" content="Step by step process to deploy Hugo website on Github pages">
+<meta property="og:image" content="https://kusnaditjung.github.io/img/logo.png">
+<meta property="og:url" content="https://kusnaditjung.github.io/post/2021-10-24-hug-deploy/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kusnadi">
+<meta name=twitter:title content="Deploy Hugo website on Github pages">
+<meta name=twitter:description content="Step by step process to deploy Hugo website on Github pages">
+<meta name=twitter:image content="https://kusnaditjung.github.io/img/logo.png">
+<meta name=twitter:card content="summary">
+<link href=https://kusnaditjung.github.io/img/favicon.ico rel=icon type=image/x-icon>
+<meta name=generator content="Hugo 0.88.1">
+<link rel=alternate href=https://kusnaditjung.github.io/index.xml type=application/rss+xml title=Kusnadi><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css integrity=sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y crossorigin=anonymous>
+<link rel=stylesheet href=https://use.fontawesome.com/releases/v5.5.0/css/all.css integrity=sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU crossorigin=anonymous>
+<link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css integrity=sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u crossorigin=anonymous><link rel=stylesheet href=https://kusnaditjung.github.io/css/main.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+<link rel=stylesheet href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"><link rel=stylesheet href=https://kusnaditjung.github.io/css/syntax.css><link rel=stylesheet href=https://kusnaditjung.github.io/css/codeblock.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css integrity=sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh crossorigin=anonymous>
+<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css integrity=sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R crossorigin=anonymous>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+<div class=container-fluid>
+<div class=navbar-header>
+<button type=button class=navbar-toggle data-toggle=collapse data-target=#main-navbar>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=https://kusnaditjung.github.io>Kusnadi</a>
+</div>
+<div class="collapse navbar-collapse" id=main-navbar>
+<ul class="nav navbar-nav navbar-right">
+<li>
+<a title=Blog href=/>Blog</a>
+</li>
+<li>
+<a title=Bio href=/page/about/>Bio</a>
+</li>
+<li>
+<a title=Tags href=/tags>Tags</a>
+</li>
+</ul>
+</div>
+<div class=avatar-container>
+<div class=avatar-img-border>
+<a title=Kusnadi href=https://kusnaditjung.github.io>
+<img class=avatar-img src=https://kusnaditjung.github.io/img/logo.png alt=Kusnadi>
+</a>
+</div>
+</div>
+</div>
+</nav>
+<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
+<div class=pswp__bg></div>
+<div class=pswp__scroll-wrap>
+<div class=pswp__container>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+<div class=pswp__item></div>
+</div>
+<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__top-bar>
+<div class=pswp__counter></div>
+<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+<div class=pswp__preloader>
+<div class=pswp__preloader__icn>
+<div class=pswp__preloader__cut>
+<div class=pswp__preloader__donut></div>
+</div>
+</div>
+</div>
+</div>
+<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div>
+</div>
+<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+</button>
+<div class=pswp__caption>
+<div class=pswp__caption__center></div>
+</div>
+</div>
+</div>
+</div>
+<div id=header-big-imgs data-num-img=3 data-img-src-1=/img/triangle.jpg data-img-desc-1=Triangle data-img-src-2=/img/sphere.jpg data-img-desc-2=Sphere data-img-src-3=/img/hexagon.jpg data-img-desc-3=Hexagon></div>
+<header class="header-section has-img">
+<div class="intro-header big-img">
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class=post-heading>
+<h1>Deploy Hugo website on Github pages</h1>
+<h2 class=post-subheading>Step by step process to deploy Hugo website on Github pages</h2>
+<span class=post-meta>
+<i class="fas fa-calendar"></i>&nbsp;Posted on October 24, 2021
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kusnadi
+</span>
+</div>
+</div>
+</div>
+</div>
+<span class=img-desc style=display:inline></span>
+</div>
+<div class="intro-header no-img">
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class=post-heading>
+<h1>Deploy Hugo website on Github pages</h1>
+<h2 class=post-subheading>Step by step process to deploy Hugo website on Github pages</h2>
+<span class=post-meta>
+<i class="fas fa-calendar"></i>&nbsp;Posted on October 24, 2021
+&nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Kusnadi
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class=container role=main>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<article role=main class=blog-post>
+<p>In the previous post, we walk through the process to create a Hugo website and generating static files.
+The next process is to host the static files on the internet.
+Hugo documentation, which can be accessed at <a href=https://gohugo.io/hosting-and-deployment/,>https://gohugo.io/hosting-and-deployment/,</a> describes different ways to host and deploy the Hugo website.</p>
+<p>The conventional approach is to generate the static files from a Hugo website and host these files with your choice of hosting providers.
+The other approach is to host the Hugo website as a source control repository and create a pipeline to generate static files and publish them with a hosting provider.
+The pipeline can be triggered on every push to the repository.</p>
+<p>In this post, we use Github as both source control repository, pipeline, and hosting providers.
+Github pipeline or Github Action is introduced in 2018, and it is a latecomer compared to other source control providers such as Bitbucket and Gitlab which have already introduced pipeline in their offering.
+Github Pages is a static web hosting service offered by Github for free since 2008.</p>
+<p>Github offers a Github page per account. In addition to that, every project can have its own Github pages.
+The requirements are slightly different between the two. For the GitHub account the page is accessed via URL <em><strong>https://[account name].github.io.</strong></em>
+For the project or repository Github page, it is accessed via URL <em><strong>https://[account name].github.io/[repository name].</strong></em></p>
+<p>For an account Github page, the static files must be hosted and deployed at repository with name <em><strong>[Github account name].github.io</strong></em>
+For a repository Github page, the static files must be hosted and deployed at the same repository.</p>
+<p>You can configure where the static files should reside from the repository settings.
+The configuration allows you to select the branch and the directory for the static files. The configuration limit the directory to either <em><strong>root</strong></em> or <em><strong>docs</strong></em> directory (see below)</p>
+<p><img src=/img/ghpage.png alt="configuration for Github pages"></p>
+<p>In this post, we create a Github page for the Github account.
+So here are the steps:</p>
+<ol>
+<li>
+<p><em><strong>Create a Hugo website locally</strong></em> <br>
+To see this step go to the previous post</p>
+</li>
+<li>
+<p><em><strong>Modify the config.toml</strong></em> <br>
+Add one line above the title in the <em><strong>config.toml</strong></em></p>
+<pre tabindex=0><code>baseurl = &quot;https://[account name].github.io&quot;
+title = &quot;[Your name]&quot;
+theme = &quot;beautifulhugo&quot;
+...
+</code></pre></li>
+<li>
+<p><em><strong>Add Github action to the Hugo website</strong></em> <br>
+create a new file and put them in the <em><strong>.github/workflow/gh-pages.yml</strong></em></p>
+<pre tabindex=0><code>name: github pages
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2.3.5 
+      - uses: peaceiris/actions-hugo@v2.5.0 
+      - run: hugo --minify 
+      - uses: peaceiris/actions-gh-pages@v3.8.0 
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }} 
+          external_repository: [accout name]/[account name].github.io
+          publish_dir: ./public      
+          publish_branch: main
+          destination_dir: ./
+          force_orphan: true
+</code></pre><p>The file name is arbitrary.
+You just need to change your Github account name in the script above.
+For the <em><strong>secrets.PERSONAL_TOKEN</strong></em>, that is a variable name you need to setup in the next step 4. <br>
+There are four steps in the deployments:</p>
+<ul>
+<li>The uses <em><strong><a href=mailto:actions/checkout@v2.3.5>actions/checkout@v2.3.5</a></strong></em> is to checkout the current repo into the local docker.</li>
+<li>The uses <em><strong><a href=mailto:peaceiris/actions-hugo@v2.5.0>peaceiris/actions-hugo@v2.5.0</a></strong></em> is to install Hugo on the docker.</li>
+<li>The run <em><strong>hugo &ndash;minify</strong></em> is to run hugo on the docker, the static files are generated on <em><strong>public</strong></em> folder. If you want the output in a different directory, you can control using <em><strong>-d [output directory]</strong></em> option.</li>
+<li>Lastly uses <em><strong><a href=mailto:peaceiris/actions-gh-pages@v3.8.0>peaceiris/actions-gh-pages@v3.8.0</a></strong></em> is to publish the static files to the remote repository.
+The <em>if</em> clause indicates that workflow is only triggered when the <em><strong>push</strong></em> trigger happen on the <em><strong>main</strong></em> branch.
+There are 6 parameters for this action:
+<ul>
+<li><strong>personal_token</strong> which will be come from the repo secrets configuration in the repository settings.</li>
+<li><strong>external_repository</strong>, the name of the repository to host the static files</li>
+<li><strong>publish_dir</strong>, the directory of the static files to be published</li>
+<li><strong>public_branch</strong>, this is a bit misleading, however this is actually for the destination branch to publish the static files</li>
+<li><strong>destination_dir</strong>, this is the directory in the destination to publish the static files</li>
+<li><strong>force_orphan</strong>, this is to make sure only the current commit exist in the destination branch, this option will overwrite whatever commits in the destination branch.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><em><strong>Create Personal Access Token</strong></em>. <br>
+In order to publish the static files to the external repository as indicated in the script in the previous step, we need an access token to commit to the [account name].github.io
+It is a two-step process. <br>
+First, we need to create a personal access token.</p>
+<ul>
+<li>go to Github account <em><strong>settings</strong></em> (click profile account on the top right and select Settings)</li>
+<li>select <em><strong>Developer settings</strong></em> tab</li>
+<li>select <em><strong>Personal access token</strong></em> tab</li>
+<li>click <em><strong>generate new token</strong></em> button</li>
+<li>Input name, set No expiration, and select workflow scopes</li>
+<li>click <em><strong>generate token</strong></em> button</li>
+<li>copy the key generated (or paste into a notepad, we will use this later in step 7) <br>
+<img src=/img/personal-access-token.png alt="Personal access token"></li>
+</ul>
+<p>Second, we need to set a variable in the Hugo website repository, this will be done in step 7.</p>
+</li>
+<li>
+<p><em><strong>Create [accout name].github.io repository</strong></em>. <br>
+Next, we need to create [account name]github.io repository to host the static files.
+Go to your Github website, and create a new repository with the above name.
+You can add a license just to make sure it creates the main branch and add the first commit.
+Note the script in step 3 will overwrite whatever commit in the branch.</p>
+</li>
+<li>
+<p><em><strong>Configure the Github page for [Account name].github.io</strong></em>. <br>
+By default, the Github page URL for the newly created repo in step 5 will be <em><strong>[account name].github.io.</strong></em>
+If you create any other repo the Github page URl is <em><strong>[account name].github.io/[repository name].</strong></em>
+The script in step 3 will deploy the static files at the root directory on the main branch. So nothing to configure for this step.
+If you change the <em><strong>publish_branch</strong></em> and <em><strong>destination_dir</strong></em> in step 3, you will need to change the destination repo Github page setting configuration.
+To access this</p>
+<ul>
+<li>go to the destination repository in the Github website</li>
+<li>select <em><strong>settings</strong></em></li>
+<li>select <em><strong>Pages</strong></em> tab</li>
+<li>select <em><strong>the branch</strong></em> and <em><strong>directory</strong></em> (root or docs) for the Github page</li>
+</ul>
+</li>
+<li>
+<p><em><strong>Create a repo for the Hugo website</strong></em> <br>
+The last step is to push the changes in the local repo to the remote repo.
+Since we assume there is no remote repo yet for the Hugo website, here is the step</p>
+<ul>
+<li>
+<p>Initiate local repository. <br>
+First, we need to initiate the Hugo website as a local git repository and assign it as the main branch (or default branch)</p>
+<pre tabindex=0><code>git init -b main
+</code></pre></li>
+<li>
+<p>create a remote repository. <br>
+The second step is to create a remote repository in Github. You can do this on the Github website, or run a command from your local machine.
+To do it from your local machine, you need to install <strong>gh</strong>* command, which you can download and install from <a href=https://cli.github.com/manual/installation>https://cli.github.com/manual/installation</a>
+after that, you need to login to Github with</p>
+<pre tabindex=0><code>gh auth login
+</code></pre><p>after you successfully login into Github, you can run this command</p>
+<pre tabindex=0><code>gh repo create [project or repo name]
+</code></pre></li>
+<li>
+<p>set secret in the remote repo <br>
+After you have created the remote repo for the Hugo website, go to the Github website, and browse the remote repo, and input the secret with key <em><strong>PERSONAL_TOKEN</strong></em> and the value generated in step 4.</p>
+<ul>
+<li>go to Hugo website repository <em><strong>settings</strong></em></li>
+<li>select <em><strong>Secret</strong></em> tab</li>
+<li>click <em><strong>new repository secret</strong></em> button</li>
+<li>input Name with <em><strong>PERSONAL_TOKEN</strong></em></li>
+<li>input Value with the generated key in step 4.</li>
+<li>click <em><strong>Add secret</strong></em> button</li>
+</ul>
+</li>
+<li>
+<p>create pull changes from remote repo to local repo. <br>
+If you have created the remote repo in the previous step, you are prompted to either create LICENSE or .gitignore files in the repo.
+To pull this change to your local repo, run</p>
+<pre tabindex=0><code>git pull --set-upstream origin main
+</code></pre></li>
+<li>
+<p>push your local commit to the remote repo. <br>
+Lastly, commit all your local changes and push them to the remote repository.</p>
+<pre tabindex=0><code>git add .
+git commit -m &quot;initial commit&quot;
+git push (or git push -u origin main)
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<p>Step to create a new blog post:</p>
+<ul>
+<li>Add an md file under <em><strong>content/post</strong></em> of the local Hugo website. <br>
+You can run <em><strong>hugo server</strong></em> command and browse your blog locally while you are creating or modifying your md file.</li>
+<li>Push your change to remote.
+<pre tabindex=0><code>git add .
+git commit -m &quot;[your blog post commit message]&quot;
+git push
+</code></pre></li>
+</ul>
+<div class=blog-tags>
+<a href=https://kusnaditjung.github.io/tags/hugo/>Hugo</a>&nbsp;
+<a href=https://kusnaditjung.github.io/tags/github/>Github</a>&nbsp;
+</div>
+</article>
+<ul class="pager blog-pager">
+<li class=previous>
+<a href=https://kusnaditjung.github.io/post/2021-10-17-first-blog-hugo/ data-toggle=tooltip data-placement=top title="Creating Blog Site using Hugo">&larr; Previous Post</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<footer>
+<div class=container>
+<div class=row>
+<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<ul class="list-inline text-center footer-links">
+<li>
+<a href=mailto:kusnaditjung@yahoo.com title="Email me">
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+<li>
+<a href=https://github.com/KusnadiTjung title=GitHub>
+<span class="fa-stack fa-lg">
+<i class="fas fa-circle fa-stack-2x"></i>
+<i class="fab fa-github fa-stack-1x fa-inverse"></i>
+</span>
+</a>
+</li>
+</ul>
+<p class="credits copyright text-muted">
+Kusnadi
+&nbsp;&bull;&nbsp;&copy;
+2021
+&nbsp;&bull;&nbsp;
+<a href=https://kusnaditjung.github.io>Kusnadi</a>
+</p>
+<p class="credits theme-by text-muted">
+<a href=https://gohugo.io>Hugo v0.88.1</a> powered &nbsp;&bull;&nbsp; Theme <a href=https://github.com/halogenica/beautifulhugo>Beautiful Hugo</a> adapted from <a href=https://deanattali.com/beautiful-jekyll/>Beautiful Jekyll</a>
+</p>
+</div>
+</div>
+</div>
+</footer><script src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js integrity=sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js integrity=sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe crossorigin=anonymous></script>
+<script src=https://code.jquery.com/jquery-1.12.4.min.js integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin=anonymous></script>
+<script src=https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js integrity=sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa crossorigin=anonymous></script>
+<script src=https://kusnaditjung.github.io/js/main.js></script><script>renderMathInElement(document.body)</script><script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js integrity=sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js integrity=sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q crossorigin=anonymous></script><script src=https://kusnaditjung.github.io/js/load-photoswipe.js></script>
+</body>
+</html>
